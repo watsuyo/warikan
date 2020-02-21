@@ -5,20 +5,30 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@typescript-eslint/parser'
   },
   extends: [
     '@nuxtjs',
-    'prettier',
-    'prettier/vue',
-    'plugin:prettier/recommended',
     'plugin:nuxt/recommended',
-    '@nuxtjs/eslint-config-typescript'
+    '@nuxtjs/eslint-config-typescript',
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'plugin:vue/recommended'
   ],
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['@typescript-eslint'],
   // add your custom rules here
   rules: {
+    semi: [2, 'never'],
+    'vue/html-indent': ['error', 2],
+    'vue/html-self-closing': 'off', //imgタグのようにタグが１つで完結してもOK
+    'vue/max-attributes-per-line': 'off',
+    'space-before-function-paren': [
+      'warn',
+      {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always'
+      }
+    ]
   }
 }
